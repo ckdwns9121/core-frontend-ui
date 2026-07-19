@@ -1,14 +1,19 @@
-import {  type ComponentType } from 'react';
+import { type ComponentType } from 'react';
 import Accordions from './components/01_accordion';
+import TabMenus from './components/02_tabMenu';
 
 const _routeMap = {
   root: {
     name: 'root',
-    children: ['accordion'],
+    children: ['accordion', 'tabMenu'],
   },
-  accordion:{
-    name: "01. 아코디언",
-    Component:Accordions
+  accordion: {
+    name: '01. 아코디언',
+    Component: Accordions,
+  },
+  tabMenu: {
+    name: '02. 탭 메뉴',
+    Component: TabMenus,
   },
 };
 

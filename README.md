@@ -10,6 +10,7 @@
 - **npm** 또는 **yarn** 패키지 매니저
 
 Node.js 버전 확인:
+
 ```bash
 node --version
 npm --version
@@ -31,11 +32,13 @@ cd ui-components
 프로젝트 디렉토리로 이동한 후, 필요한 패키지를 설치합니다:
 
 **npm 사용 시:**
+
 ```bash
 npm install
 ```
 
 **yarn 사용 시:**
+
 ```bash
 yarn install
 ```
@@ -45,11 +48,13 @@ yarn install
 설치가 완료되면 개발 서버를 시작할 수 있습니다:
 
 **npm 사용 시:**
+
 ```bash
 npm run dev
 ```
 
 **yarn 사용 시:**
+
 ```bash
 yarn dev
 ```

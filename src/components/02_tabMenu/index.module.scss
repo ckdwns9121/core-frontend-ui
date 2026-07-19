@@ -1,0 +1,129 @@
+.TabMenus {
+  .container {
+    border: 1px solid #ccc;
+  }
+  .tabList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid #ccc;
+  }
+  .tab {
+    flex: 0 0 25%;
+    overflow: hidden;
+    box-sizing: border-box;
+    > button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: left;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    &.current > button {
+      background-color: #bde;
+    }
+  }
+  .description {
+    padding: 15px;
+  }
+
+  .tabMenu2 .description {
+    display: none;
+    &.current {
+      display: block;
+    }
+  }
+  .tabMenu3-1 {
+    .tab > button {
+      transition: ease-out 500ms;
+    }
+    .tabPanel {
+      position: relative;
+      overflow: hidden;
+    }
+    .description {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 15px;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity ease-in 300ms transform ease-in 500ms;
+
+      &.current {
+        position: relative;
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity ease-out 300ms 200ms,
+          transform ease-out 500ms;
+      }
+    }
+  }
+
+  @keyframes enter {
+    0% {
+      transform: translate(40px, 0);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes exit {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(40px, 0);
+      opacity: 0;
+    }
+  }
+  .tabMenu3-2 {
+    .tab > button {
+      transition: ease-out 500ms;
+    }
+    .tabPanel {
+      position: relative;
+      overflow: hidden;
+    }
+    .description {
+      overflow: hidden;
+      height: 0;
+      padding: 0;
+      position: absolute;
+      transform: translate(0, 40px);
+      opacity: 0;
+      box-sizing: border-box;
+      padding: 15px;
+      left: 0;
+      right: 0;
+      top: 0;
+
+      &.enter {
+        height: auto;
+        padding: 15px;
+      }
+
+      &.enter {
+        position: relative;
+        animation: enter 300ms ease-out 200ms forwards;
+      }
+      &.exit {
+        animation: exit 300ms ease-in forwards;
+      }
+    }
+  }
+}

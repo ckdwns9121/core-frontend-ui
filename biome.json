@@ -80,9 +80,7 @@
   },
   "overrides": [
     {
-      "includes": [
-        "**/*.json"
-      ],
+      "includes": ["**/*.json"],
       "formatter": {
         "indentWidth": 2
       }
