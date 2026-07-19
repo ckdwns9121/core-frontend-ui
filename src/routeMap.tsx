@@ -1,9 +1,14 @@
-import type { ComponentType } from 'react';
+import {  type ComponentType } from 'react';
+import Accordions from './components/01_accordion';
 
 const _routeMap = {
   root: {
     name: 'root',
-    children: [],
+    children: ['accordion'],
+  },
+  accordion:{
+    name: "01. 아코디언",
+    Component:Accordions
   },
 };
 
