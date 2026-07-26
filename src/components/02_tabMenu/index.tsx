@@ -2,6 +2,8 @@ import TabMenu1 from './1_r';
 import TabMenu2 from './2_r';
 import TabMenu3_1 from './3-1_r';
 import TabMenu3_2 from './3-2_r';
+import TabMenu4 from './4_v';
+import TabMenu5 from './5_r';
 import cx from './cx';
 
 const TabMenus = () => {
@@ -12,6 +14,8 @@ const TabMenus = () => {
       <TabMenu2 />
       <TabMenu3_1 />
       <TabMenu3_2 />
+      <TabMenu4 />
+      <TabMenu5 />
     </div>
   );
 };

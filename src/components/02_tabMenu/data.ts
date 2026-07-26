@@ -23,34 +23,4 @@ export const data = [
     description:
       'Voluptate irure irure culpa excepteur sunt. Pariatur ipsum pariatur cupidatat enim velit culpa consectetur aliqua. Ex laborum minim Lorem ex ex.',
   },
-  {
-    id: '6a5ca4c8523aed3bb1cd3cb5',
-    title: 'Sunt Ex Cupidatat Ea Nulla',
-    description:
-      'Cillum non anim occaecat duis sunt. Sit dolor deserunt tempor laborum id enim qui occaecat occaecat veniam velit proident. Culpa pariatur id minim sunt eiusmod. Ut laboris et in duis duis et.',
-  },
-  {
-    id: '6a5ca4c8ee3c37a4fdfe2d8e',
-    title: 'In Magna Ex Nisi Ipsum',
-    description:
-      'Lorem laborum occaecat esse nostrud consequat proident consectetur occaecat anim elit duis non reprehenderit. Labore cupidatat labore mollit nisi ad labore nisi quis sit. Culpa pariatur deserunt consequat magna eu sint dolore dolore proident.',
-  },
-  {
-    id: '6a5ca4c84ba1ebedf69c0862',
-    title: 'Ullamco Minim Proident Nulla Sit Nisi',
-    description:
-      'Aliqua exercitation fugiat officia commodo esse deserunt minim nostrud. Excepteur do deserunt ad laborum ut aliqua commodo proident enim irure consequat. Deserunt adipisicing mollit enim nostrud est. Adipisicing do ea cillum elit incididunt eu ex deserunt minim fugiat.',
-  },
-  {
-    id: '6a5ca4c8782a083acd7e39af',
-    title: 'Labore Quis Consequat Et Nisi Elit Irure',
-    description:
-      'Id do tempor ipsum occaecat sit consequat aute irure elit nulla amet magna eiusmod. Sunt ut esse deserunt occaecat ex adipisicing exercitation duis excepteur. Aute eiusmod laborum proident esse laborum quis consectetur sint excepteur aliquip culpa elit enim esse. Et velit exercitation in pariatur culpa ex non incididunt.',
-  },
-  {
-    id: '6a5ca4c855eb6846ec554fbc',
-    title: 'Non Consectetur Ea Sit',
-    description:
-      'Adipisicing cupidatat proident fugiat nisi sunt non irure irure anim. Proident officia laborum quis non nostrud esse id culpa duis sint amet amet voluptate aliquip. Velit et ad sint et Lorem voluptate nisi veniam pariatur irure proident sunt. Ut Lorem fugiat elit dolore officia nulla incididunt sint ut irure ipsum exercitation labore.',
-  },
 ];
