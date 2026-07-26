@@ -6,6 +6,9 @@ import Accordion4 from './4_v';
 import Accordion5_1 from './5-1_r';
 import Accordion5_2 from './5-2_r';
 import Accordion6 from './6_r';
+import Accordion7 from './7_r';
+import Accordion8 from './8_r';
+import Accordion9 from './9_r';
 import cx from './cx';
 
 const Accordion = () => {
@@ -20,6 +23,9 @@ const Accordion = () => {
       <Accordion5_1 />
       <Accordion5_2 />
       <Accordion6 />
+      <Accordion7 />
+      <Accordion8 />
+      <Accordion9 />
     </div>
   );
 };
