@@ -1,0 +1,72 @@
+.Tooltips {
+  .tooltip-root {
+    display: inline;
+    margin-right: 10px;
+    font-size: 1rem;
+    line-height: 1.3rem;
+  }
+  .tooltip-trigger {
+    position: relative;
+    display: inline-block;
+    margin-left: 4px;
+    &:after {
+      content: 'i';
+      display: inline-block;
+      font-family: serif;
+      font-size: 0.7rem;
+      line-height: 1rem;
+      width: 16px;
+      height: 16px;
+      text-align: center;
+      vertical-align: middle;
+      color: #05f;
+      border: 1px solid #05f;
+      border-radius: 50%;
+    }
+    &.open:after {
+      color: #f50;
+      border-color: #f50;
+    }
+  }
+  .tooltip-layer {
+    position: absolute;
+    display: inline-block;
+    top: 1.4rem;
+    left: 30px;
+    width: 40vw;
+    max-width: calc(50vw - 9px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 2;
+  }
+  .details {
+    display: inline-block;
+    position: relative;
+    &[open] .tooltip-trigger:after {
+      border-color: #f50;
+      color: #f50;
+    }
+  }
+  .anchor-target {
+    display: none;
+    position: absolute;
+    width: 40vw;
+    max-width: calc(50vw - 9px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 2;
+  }
+  .anchor[open] {
+    anchor-name: --tooltip-anchor;
+  }
+  .anchor[open] + .anchor-target {
+    display: block;
+    position-anchor: --tooltip-anchor;
+    top: anchor(bottom);
+    left: anchor(right);
+    position-try: flip-inline, flip-block;
+    // 좌우 반전(flip-inline) 상하 반전(flip-block)
+  }
+}
