@@ -1,0 +1,76 @@
+.ReactiveTextBoxes {
+  // 스타일에서 가장 주의해야 할 점은, line-height를 픽셀 단위로 정확히 특정해야 한다는 점입니다. line-height를 숫자만 넣거나
+  // rem, em 등의 상대적인 값을 설정하면, 글자의 높이가 소숫점 이하 단위를 포함한 값이 될 수 있습니다. 반면, 자바스크립트에서
+  // scrollHeight 값을 읽으면 소수점을 제외한 정숫값만 가져옵니다. 이 차이로 인해 불필요한 상황에서도 overflow가 발생하여
+  // 스크롤바가 활성화되는 문제가 발생할 수 있습니다.
+  .container {
+    width: 50vw;
+    position: relative;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px 0 5px 10px;
+  }
+  textarea {
+    font-size: 13px;
+    line-height: 22px;
+    min-height: 66px;
+    max-height: 220px;
+    box-sizing: border-box;
+    width: 100%;
+    resize: none;
+    // overflow: hidden 설정 여부는 자동 높이 조절에는 영향을 주지 않습니다. 다만, 최대 높이 설정한 경우 overflow: hidden을
+    // 사용하면 안 됩니다. 최대 높이를 초과할 때 스크롤 할 수 없게 되기 때문입니다. 한편, overflow: auto를 설정하면 최대 높이를 초과할
+    // 때 스크롤바가 활성화되는데, 이때 스크롤바가 차지하는 너비만큼 영역이 좁아져 textarea의 높이가 달라질 수 있습니다. 이를
+    // 방지하기 위해 처음부터 overflow: scroll로 스크롤바 영역을 확보하고, 너비를 고정한 상태에서 시작합시다
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+  }
+  .container:has(textarea:focus) {
+    border-color: #a00;
+    outline: 1px solid #a00;
+  }
+  .replica {
+    position: absolute;
+    width: calc(100% - 10px);
+    visibility: hidden;
+    min-height: auto;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  // ── #0. 비교용 ────────────────────────────────────────────────────────────
+  .compare {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    // 위 .container가 width: 50vw로 고정되어 있어 두 칸을 나란히 두려면 좁혀야 합니다.
+    .container {
+      width: 100%;
+    }
+    > div {
+      flex: 1 1 300px;
+      min-width: 0;
+    }
+  }
+  .caption {
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: #555;
+    code {
+      font-size: 12px;
+      background: #eee;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+  }
+  // 지원하는 브라우저에서만 적용됩니다. 미지원이면 왼쪽 칸과 동일하게 동작합니다.
+  @supports (field-sizing: content) {
+    textarea.field-sizing {
+      field-sizing: content;
+    }
+  }
+}
