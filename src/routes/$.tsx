@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { isParentRoute, type RoutePath, routeMap } from '@/routeMap';
+import ViewportContextProvider from '@/context/viewportContext';
 
 export const Route = createFileRoute('/$')({
   component: ItemPage,
@@ -11,6 +12,10 @@ function ItemPage() {
   if (!route || isParentRoute(route) || !route.Component) return null;
 
   const Component = route.Component;
-  return <Component />;
+  return (
+    <ViewportContextProvider>
+      <Component />
+    </ViewportContextProvider>
+  );
 }
 export default ItemPage;

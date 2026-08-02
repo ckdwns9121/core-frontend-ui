@@ -55,7 +55,7 @@ const Tooltip2_2 = () => {
   return (
     <>
       <h3>
-        #1. React<sub>터치 또는 클릭으로 동작하는 툴팁</sub>
+        #2-2. React<sub>터치 또는 클릭으로 동작하는 툴팁</sub>
       </h3>
       {data.map(d => (
         <TooltipItem {...d} key={d.id} />
