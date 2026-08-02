@@ -4,6 +4,7 @@ import Tooltip2_2 from './2-2_r';
 import Tooltip2_2_1 from './2-2-1_r';
 import Tooltip2_3 from './2-3_r';
 import Tooltip3 from './3_r';
+import Tooltip4 from './4_r';
 import cx from './cx';
 
 const ToolTips = () => (
@@ -15,6 +16,7 @@ const ToolTips = () => (
     <Tooltip2_2_1 />
     <Tooltip2_3 />
     <Tooltip3 />
+    <Tooltip4 />
   </div>
 );
 
