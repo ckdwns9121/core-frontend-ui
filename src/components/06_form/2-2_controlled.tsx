@@ -12,7 +12,6 @@ import {
   useEffect,
   useMemo,
   useReducer,
-  useRef,
 } from 'react';
 
 type FormElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
@@ -107,6 +106,28 @@ const formController: Partial<Record<FormItem, FormControl>> = {
   __agree: { valueMissing: '약관에 동의해야 가입할 수 있습니다.' },
 };
 
+// 다른 필드를 참조하는 검증(additionalValidator)만 따로 다시 돌립니다.
+//
+// handleInvalid는 이벤트가 발생한 요소 하나만 보기 때문에 이런 구멍이 생깁니다.
+//   1. 비밀번호 "abc" 입력
+//   2. 확인란에 "abc" 입력 → 일치 판정 → setCustomValidity('') → 유효
+//   3. 비밀번호를 "xyz"로 수정 → 확인란에는 이벤트가 가지 않음
+//   4. 확인란은 여전히 '유효' 상태 → 네이티브 검증도 통과 → 그대로 제출됨
+//
+// 그래서 제출 직전에 폼 전체를 한 번 훑어 다시 판정해야 합니다.
+const checkAdditionalValidity = ($el: FormElement, formState: FormState) => {
+  const inputController = formController[$el.name as FormItem];
+  const { additionalValidator, customError = '[custom error]' } =
+    inputController || {};
+
+  // 추가 검증이 없는 필드는 네이티브 검증이 이미 처리했으므로 통과로 봅니다.
+  if (!additionalValidator) return true;
+
+  const isValid = additionalValidator($el, formState);
+  $el.setCustomValidity(isValid ? '' : customError);
+  return isValid;
+};
+
 export const Form2 = () => {
   const [formState, dispatch] = useReducer(formReducer, defaultFormState);
 
@@ -138,7 +159,8 @@ export const Form2 = () => {
 
   // 값이 바뀔 때마다 검증을 다시 돌립니다. #2-1의 handleInput과 같은 흐름입니다.
   // formState는 dispatch 이전 값이라, 지금 고치는 요소가 아닌 다른 필드의 값을 볼 때는
-  // 한 박자 늦습니다(비밀번호 확인이 아래 useEffect를 따로 두는 이유).
+  // 한 박자 늦습니다. 다른 필드를 참조하는
+  // 검증은 제출 시점의 checkAdditionalValidity가 마무리합니다.
   const handleChange = useCallback(
     (e: FormEvent) => {
       const $el = handleInvalid(e, formState);
@@ -156,8 +178,22 @@ export const Form2 = () => {
   );
 
   const handleSubmit = useCallback(
-    (e: FormEvent) => {
+    (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      const $form = e.currentTarget;
+
+      // every()만 쓰면 첫 실패에서 순회가 멈춰 뒤쪽 필드의 setCustomValidity가 실행되지 않습니다.
+      // map()으로 전부 돌려 상태를 갱신한 뒤 결과를 모읍니다.
+      const results = Array.from($form.elements).map($el =>
+        checkAdditionalValidity($el as FormElement, formState),
+      );
+
+      if (!results.every(Boolean)) {
+        // 방금 건 커스텀 에러를 말풍선으로 보여주고 제출을 멈춥니다.
+        $form.reportValidity();
+        return;
+      }
+
       // 비제어와 달리 FormData를 만들 필요가 없습니다. state가 이미 제출할 값 그 자체입니다.
       console.log(formState);
     },
@@ -182,17 +218,6 @@ export const Form2 = () => {
   const passwordMismatch =
     formState.__password_confirm !== '' &&
     formState.__password !== formState.__password_confirm;
-
-  // 비밀번호 불일치는 네이티브 검증이 잡지 못합니다. 둘 다 채워져 있으면 required를 통과해
-  // 유효한 상태가 되고, 그러면 invalid 이벤트가 아예 발화하지 않아 additionalValidator도 못 돕니다.
-  // 그래서 state가 바뀔 때마다 커스텀 에러를 직접 걸어 무효 상태를 만들어 둡니다.
-  // 검증 상태는 React state가 아니라 DOM이 들고 있어 제어 폼에서도 ref가 필요한 자리입니다.
-  const confirmRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    confirmRef.current?.setCustomValidity(
-      passwordMismatch ? '비밀번호가 일치하지 않습니다.' : '',
-    );
-  }, [passwordMismatch]);
 
   return (
     <>
@@ -278,7 +303,6 @@ export const Form2 = () => {
               type="password"
               required
               autoComplete="off"
-              ref={confirmRef}
               value={formState.__password_confirm}
               onChange={handleChange}
               onInvalid={handleInvalidEvent}
