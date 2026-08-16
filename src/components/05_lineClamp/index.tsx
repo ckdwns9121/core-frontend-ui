@@ -1,8 +1,8 @@
 import cx from './cx';
 import LineClamp1 from './1_r';
 import LineClamp2 from './2_r';
-// import LineClamp3 from './3_r';
-// import LineClamp4 from './4_v';
+import LineClamp3 from './3_r';
+import LineClamp4 from './4_v';
 
 const LineClamps = () => {
   return (
@@ -10,8 +10,8 @@ const LineClamps = () => {
       <h2>말 줄임</h2>
       <LineClamp1 />
       <LineClamp2 />
-      {/* <LineClamp3 />
-      <LineClamp4 /> */}
+      <LineClamp3 />
+      <LineClamp4 />
     </div>
   );
 };
