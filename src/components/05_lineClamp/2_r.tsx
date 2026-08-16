@@ -12,6 +12,7 @@ const LineClampedText = ({
   maxLines: number;
 }) => {
   const { width: viewportWidth } = useViewportSize();
+  const cloneRef = useRef<HTMLDivElement>(null);
   const elemRef = useRef<HTMLDivElement>(null);
   const [showClampButton, setClampButton] = useState(false);
   const [isClamped, setIsClamped] = useState(false);
@@ -21,19 +22,24 @@ const LineClampedText = ({
   }, []);
 
   useEffect(() => {
-    if (!text || !elemRef.current || !viewportWidth) return;
-    const linesOverflow = measureLines(elemRef.current, text) > maxLines;
+    if (!cloneRef.current || !elemRef.current || !viewportWidth) return;
+    const lineHeight = Number.parseFloat(
+      getComputedStyle(elemRef.current).lineHeight,
+    );
+    const measuredLines = Math.round(
+      cloneRef.current.scrollHeight / lineHeight,
+    );
+    const linesOverflow = measuredLines > maxLines;
     setIsClamped(linesOverflow);
     setClampButton(linesOverflow);
-  }, [text, viewportWidth, maxLines]);
+  }, [viewportWidth, maxLines]);
 
   return (
     <div className={cx('content', { clamped: isClamped })}>
-      <div
-        className={cx('text')}
-        ref={elemRef}
-        style={{ WebkitLineClamp: isClamped ? maxLines : '' }}
-      >
+      <div className={cx('text-clone')} ref={cloneRef}>
+        {text}
+      </div>
+      <div className={cx('text')} ref={elemRef}>
         {text}
       </div>
       {showClampButton && (
@@ -43,11 +49,11 @@ const LineClampedText = ({
   );
 };
 
-const LineClamp1 = () => {
+const LineClamp2 = () => {
   return (
     <>
       <h3>
-        #1. React<sub>canvas - 3줄 말줄임</sub>
+        #2. React<sub>레플리카 기법</sub>
       </h3>
       {data.map((text, i) => (
         <LineClampedText key={i} text={text} maxLines={3} />
@@ -56,4 +62,4 @@ const LineClamp1 = () => {
   );
 };
 
-export default LineClamp1;
+export default LineClamp2;
