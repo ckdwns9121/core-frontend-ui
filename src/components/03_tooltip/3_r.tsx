@@ -4,7 +4,7 @@ import data from './data';
 import useStyleInsideViewport from '@/hooks/useStyleInsideViewport';
 
 type TooltipProps = { id: string; text: string; description: string };
-const TooltipItem = ({ id, text, description }: TooltipProps) => {
+const TooltipItem = ({ text, description }: TooltipProps) => {
   const rootRef = useRef<HTMLDetailsElement>(null); // 1
   const targetRef = useRef<HTMLDivElement>(null); // 1
   const style = useStyleInsideViewport(rootRef, targetRef); // 2
