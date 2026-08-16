@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import cx from './cx';
 import data from './data';
-import measureLines from '@/service/measureLines';
 import { useViewportSize } from '@/context/viewportContext';
 
 const LineClampedText = ({
@@ -39,7 +38,11 @@ const LineClampedText = ({
       <div className={cx('text-clone')} ref={cloneRef}>
         {text}
       </div>
-      <div className={cx('text')} ref={elemRef}>
+      <div
+        className={cx('text')}
+        ref={elemRef}
+        style={{ WebkitLineClamp: isClamped ? maxLines : '' }}
+      >
         {text}
       </div>
       {showClampButton && (
