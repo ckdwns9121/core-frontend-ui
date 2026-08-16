@@ -1,0 +1,21 @@
+.Forms {
+  input {
+    padding: 0 8px;
+    font-size: 1.2rem;
+    line-height: 1.44;
+    text-align: end;
+    &:valid {
+      background-color: #e5ffff;
+    }
+    &:invalid {
+      background-color: #ffe0e0;
+      box-shadow: 0 0 3px 1px #f55;
+    }
+  }
+  .errorMsg:not(:empty) {
+    border-bottom: 2px solid #c55;
+    margin-left: 10px;
+    padding: 3px 5px;
+    color: #c55;
+  }
+}
