@@ -224,6 +224,7 @@ export const Form2 = () => {
       <h3>
         #2-2. React<sub>제어 폼</sub>
       </h3>
+      <sub>{formState.__name} 님 안녕하세요</sub>
       <form id="registerForm2" onSubmit={handleSubmit}>
         <fieldset>
           <legend>회원가입</legend>

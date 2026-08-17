@@ -76,6 +76,7 @@ const handleSubmit = (e: FormEvent) => {
   e.preventDefault();
   const $form = e.target as HTMLFormElement;
   const data = new FormData($form);
+  console.log(data);
   for (const [key] of data) {
     if (formController[key]?.transformData) {
       data.set(key, formController[key].transformData(data));
@@ -90,6 +91,7 @@ const Form1 = () => {
       <h3>
         #2-1. React<sub>비제어 폼</sub>
       </h3>
+      <sub>{}</sub>
       <form id="registerForm" onInput={handleInput} onSubmit={handleSubmit}>
         <fieldset>
           <legend>회원가입</legend>
