@@ -123,3 +123,49 @@
     grid-template-columns: 1fr;
   }
 }
+
+.infinite-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.infinite-page {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+
+  li {
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+  }
+
+  p {
+    margin: 8px 0 0;
+    color: #666;
+  }
+}
+
+.infinite-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  color: #666;
+
+  button {
+    padding: 10px 18px;
+    border: 1px solid #457;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #345;
+    cursor: pointer;
+  }
+}
