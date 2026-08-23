@@ -8,3 +8,43 @@ div.list {
 img.lazy {
   background-color: #cab;
 }
+
+.lazy-image {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0;
+  background-color: #cab;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    pointer-events: none;
+    background-color: rgb(255 255 255 / 8%);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity 300ms ease;
+  }
+
+  &.lazy {
+    &::after {
+      opacity: 1;
+    }
+
+    img {
+      opacity: 0;
+    }
+  }
+}

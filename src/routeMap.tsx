@@ -6,6 +6,8 @@ import ReactiveTextBoxes from './components/04_reactiveTextBox';
 import LineClamps from './components/05_lineClamp';
 import Forms from './components/06_form';
 import LazyLoading1 from './components/07_lazyLoading/1_r';
+import LazyLoading2 from './components/07_lazyLoading/2_r';
+import LazyLoading3 from './components/07_lazyLoading/3_v';
 const _routeMap = {
   root: {
     name: 'root',
@@ -46,11 +48,19 @@ const _routeMap = {
   lazyLoading: {
     link: 'lazyLoading/1_r',
     name: '07. 지연로딩',
-    children: ['lazyLoading/1_r'],
+    children: ['lazyLoading/1_r', 'lazyLoading/2_r', 'lazyLoading/3_v'],
   },
   'lazyLoading/1_r': {
     name: '1R 직접계산',
     Component: LazyLoading1,
+  },
+  'lazyLoading/2_r': {
+    name: '2R IntersectionObserver',
+    Component: LazyLoading2,
+  },
+  'lazyLoading/3_v': {
+    name: '3V Vanilla',
+    Component: LazyLoading3,
   },
 };
 
