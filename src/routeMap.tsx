@@ -5,7 +5,7 @@ import ToolTips from './components/03_tooltip';
 import ReactiveTextBoxes from './components/04_reactiveTextBox';
 import LineClamps from './components/05_lineClamp';
 import Forms from './components/06_form';
-
+import LazyLoading1 from './components/07_lazyLoading/1_r';
 const _routeMap = {
   root: {
     name: 'root',
@@ -16,6 +16,7 @@ const _routeMap = {
       'reactiveTextBox',
       'lineClamp',
       'form',
+      'lazyLoading',
     ],
   },
   accordion: {
@@ -41,6 +42,15 @@ const _routeMap = {
   form: {
     name: '06. 폼 컨트롤',
     Component: Forms,
+  },
+  lazyLoading: {
+    link: 'lazyLoading/1_r',
+    name: '07. 지연로딩',
+    children: ['lazyLoading/1_r'],
+  },
+  'lazyLoading/1_r': {
+    name: '1R 직접계산',
+    Component: LazyLoading1,
   },
 };
 
