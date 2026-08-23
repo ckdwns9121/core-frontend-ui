@@ -30,7 +30,16 @@ export const generateRandomNumber = (min = 0, max = 0, step = 1) => {
 export const waitFor = (ms: number) =>
   new Promise(resolve => setTimeout(resolve, ms));
 
-export const shiftData = <T>(list: T[], shift = 0, size = list.length) => {
-  const shifted = list.slice(shift + 1).concat(list.slice(0, shift));
+export const shiftData = <T>(
+  list: readonly T[],
+  pageNumber = 0,
+  size = list.length,
+) => {
+  if (list.length === 0 || size <= 0) return [];
+
+  const offset =
+    ((Math.trunc(pageNumber) % list.length) + list.length) % list.length;
+  const shifted = [...list.slice(offset), ...list.slice(0, offset)];
+
   return shifted.slice(0, size);
 };

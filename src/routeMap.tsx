@@ -8,6 +8,7 @@ import Forms from './components/06_form';
 import LazyLoading1 from './components/07_lazyLoading/1_r';
 import LazyLoading2 from './components/07_lazyLoading/2_r';
 import LazyLoading3 from './components/07_lazyLoading/3_v';
+import Pagination from './components/08_pagenation';
 const _routeMap = {
   root: {
     name: 'root',
@@ -19,6 +20,7 @@ const _routeMap = {
       'lineClamp',
       'form',
       'lazyLoading',
+      'pagenation',
     ],
   },
   accordion: {
@@ -61,6 +63,10 @@ const _routeMap = {
   'lazyLoading/3_v': {
     name: '3V Vanilla',
     Component: LazyLoading3,
+  },
+  pagenation: {
+    name: '08. 페이지네이션',
+    Component: Pagination,
   },
 };
 

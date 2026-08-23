@@ -1,0 +1,125 @@
+.Pagination {
+  display: block;
+}
+
+.pagination-list {
+  box-sizing: border-box;
+  width: 500px;
+  min-height: 185px;
+  margin: 0 0 16px;
+  padding: 12px 12px 12px 36px;
+  border: 1px solid #ddd;
+
+  li + li {
+    margin-top: 8px;
+  }
+
+  &.loading {
+    opacity: 0.45;
+  }
+}
+
+.request-status {
+  min-height: 24px;
+  margin: 0 0 8px;
+  color: #666;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  button {
+    min-width: 36px;
+    height: 36px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      background-color: #eef5ff;
+    }
+
+    &:disabled {
+      color: #aaa;
+      cursor: not-allowed;
+    }
+
+    &.active {
+      border-color: #457;
+      background-color: #457;
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.comparison-panel {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  h4 {
+    margin-top: 0;
+  }
+}
+
+.comparison-buttons {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  gap: 6px;
+
+  button {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+
+    &.active {
+      border-color: #457;
+      background-color: #457;
+      color: #fff;
+    }
+  }
+
+  span {
+    color: #666;
+    font-size: 0.875rem;
+  }
+}
+
+.slow-list {
+  box-sizing: border-box;
+  height: 360px;
+  margin: 12px 0 0;
+  padding: 12px 12px 12px 40px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+
+  li + li {
+    margin-top: 4px;
+  }
+}
+
+.pending {
+  opacity: 0.55;
+  transition: opacity 150ms ease;
+}
+
+@media (max-width: 1000px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
