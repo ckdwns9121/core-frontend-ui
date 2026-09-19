@@ -21,7 +21,6 @@ const getScrollInfo = (() => {
     const newScrollInfo = { left: scrollLeft, top: scrollTop, scrollHeight };
     // scrollInfo값이 변경된 경우만 렌더링 하도록 하기 위한 코드.
     if (!deepCompare(stored, newScrollInfo)) {
-      console.log('🔄 ScrollInfo changed:', newScrollInfo);
       stored = newScrollInfo;
     }
     return stored;
@@ -93,7 +92,6 @@ const getViewportSize = (() => {
     const { clientWidth, clientHeight } = getViewportElem();
     const newSize = { width: clientWidth, height: clientHeight };
     if (!deepCompare(stored, newSize)) {
-      // console.log('📏 ViewportSize changed:', newSize);
       stored = newSize;
     }
     return stored;

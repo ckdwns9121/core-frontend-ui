@@ -1,0 +1,23 @@
+.Popover {
+  position: fixed;
+  z-index: 1000;
+  display: grid;
+  width: 190px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  background: white;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+
+  button {
+    padding: 11px 14px;
+    border: 0;
+    background: white;
+    text-align: left;
+    cursor: pointer;
+    &:hover,
+    &:focus-visible {
+      background: #f2f4f7;
+    }
+  }
+}

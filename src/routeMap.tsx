@@ -9,6 +9,14 @@ import LazyLoading1 from './components/07_lazyLoading/1_r';
 import LazyLoading2 from './components/07_lazyLoading/2_r';
 import LazyLoading3 from './components/07_lazyLoading/3_v';
 import Pagination from './components/08_pagenation';
+import Carousels from './components/09_carousel';
+import ScrollSpy1 from './components/10_scrollSpy/1_r';
+import ScrollSpy2 from './components/10_scrollSpy/2_r';
+import ScrollSpy3 from './components/10_scrollSpy/3_r';
+import Snackbars from './components/11_snackbar';
+import Modals from './components/12_modal';
+import Popovers from './components/13_popover';
+import Dropdowns from './components/14_dropdown';
 const _routeMap = {
   root: {
     name: 'root',
@@ -21,6 +29,12 @@ const _routeMap = {
       'form',
       'lazyLoading',
       'pagenation',
+      'carousel',
+      'scrollSpy',
+      'snackbar',
+      'modal',
+      'popover',
+      'dropdown',
     ],
   },
   accordion: {
@@ -67,6 +81,43 @@ const _routeMap = {
   pagenation: {
     name: '08. 페이지네이션',
     Component: Pagination,
+  },
+  carousel: {
+    name: '09. 캐러셀',
+    Component: Carousels,
+  },
+  scrollSpy: {
+    link: 'scrollSpy/1_r',
+    name: '10. 스크롤 스파이',
+    children: ['scrollSpy/1_r', 'scrollSpy/2_r', 'scrollSpy/3_r'],
+  },
+  'scrollSpy/1_r': {
+    name: '1R 직접계산',
+    Component: ScrollSpy1,
+  },
+  'scrollSpy/2_r': {
+    name: '2R 개별 IO',
+    Component: ScrollSpy2,
+  },
+  'scrollSpy/3_r': {
+    name: '3R IO + ScrollBox',
+    Component: ScrollSpy3,
+  },
+  snackbar: {
+    name: '11. 스낵바',
+    Component: Snackbars,
+  },
+  modal: {
+    name: '12. 모달',
+    Component: Modals,
+  },
+  popover: {
+    name: '13. 팝오버',
+    Component: Popovers,
+  },
+  dropdown: {
+    name: '14. 드롭다운',
+    Component: Dropdowns,
   },
 };
 

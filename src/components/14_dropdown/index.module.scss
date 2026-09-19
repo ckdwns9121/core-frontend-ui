@@ -1,0 +1,46 @@
+.Dropdown {
+  position: relative;
+  width: min(420px, 100%);
+}
+
+.trigger {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  color: white;
+  background: #c35;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.list {
+  position: absolute;
+  top: calc(100% + 6px);
+  z-index: 10;
+  display: grid;
+  width: 100%;
+  padding: 6px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 12%);
+}
+
+.option {
+  padding: 11px 14px;
+  border: 0;
+  background: white;
+  text-align: left;
+  cursor: pointer;
+
+  &.focused {
+    background: #fff1f4;
+  }
+  &[aria-selected='true'] {
+    border-left: 3px solid #c35;
+    font-weight: 700;
+  }
+}

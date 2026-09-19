@@ -1,0 +1,120 @@
+.Carousels {
+  max-width: 1100px;
+}
+
+.ScrollBox {
+  position: relative;
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 8px 48px 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  list-style: none;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  flex: 0 0 clamp(240px, 72vw, 340px);
+  min-width: 0;
+  scroll-snap-align: center;
+
+  &.current {
+    scroll-snap-stop: always;
+  }
+}
+
+.observer {
+  flex: 0 0 1px;
+  align-self: stretch;
+  margin-inline: -9px;
+  pointer-events: none;
+}
+
+.card {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 8%);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  figcaption {
+    display: grid;
+    gap: 4px;
+    padding: 14px 16px 16px;
+  }
+
+  strong {
+    font-size: 1.05rem;
+  }
+
+  span {
+    color: #666;
+    font-size: 0.9rem;
+  }
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgb(0 0 0 / 14%);
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 92%);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 15%);
+  color: #234;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  &:hover:not(:disabled) {
+    background-color: #fff;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #58a;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    visibility: hidden;
+    cursor: default;
+  }
+}
+
+.nav-prev {
+  left: 4px;
+}
+
+.nav-next {
+  right: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .list {
+    scroll-behavior: auto;
+  }
+}
